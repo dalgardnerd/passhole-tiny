@@ -9,7 +9,7 @@ A very small extension for generating secure passhphrases.
 - 2 random digits appended to the end
 
 # installation
-- download zip from releases
+- download zip from (releases)[https://github.com/dalgardnerd/passhole-tiny/releases/tag/chrome]
 - unzip it
 - chrome -> manage extensions -> load unpacked
 - load the unzipped folder "build"
