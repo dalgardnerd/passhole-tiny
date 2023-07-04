@@ -13,20 +13,17 @@
 	const randomDigits = 2;
 	const wordSeparator = '-';
 
-	let copyButtonText = "Copied!"
+	
+	const notCopiedText = "copy passphrase"
+	const copiedText = "copied!"
+	let copyButton = notCopiedText;
 	let copyTimeout: any;
 
 	onMount(async () => {
 		const response = await fetch('basic.txt');
 		const text = await response.text();
 		wordList = text.split('\n');
-		passphrase = createPassphrase(minChars,maxChars,wordCount,randomDigits,wordSeparator,wordList)
-		copyClipboard(passphrase);
-		setTimeout(() => {
-    		copyButtonText = "copy passphrase"
-		}, 2000); 
-		
-
+		passphrase = createPassphrase(minChars, maxChars, wordCount, randomDigits, wordSeparator, wordList);
 	});
 
 	function handleGet() {
@@ -36,9 +33,9 @@
 	function handleCopy() {
 		clearTimeout(copyTimeout);
 		copyClipboard(passphrase);
-		copyButtonText = "copied!"
+		copyButton = copiedText;
 		copyTimeout = setTimeout(() => {
-    		copyButtonText = "copy passphrase"
+    		copyButton = notCopiedText;
 		}, 2000); 
 	}
 
@@ -53,6 +50,8 @@
 		}
 	}
 
+
+
 </script>
 
   <div class="card w-96 bg-neutral text-primary-content border-2 border-white rounded-none">
@@ -66,7 +65,7 @@
 		>
 		<button
 			class="btn-sm rounded btn-accent lowercase w-32"
-			on:click={handleCopy}>{copyButtonText}</button
+			on:click={handleCopy}>{copyButton}</button
 		>
 
       </div>
