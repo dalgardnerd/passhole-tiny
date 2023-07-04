@@ -67,7 +67,6 @@
 			class="btn-sm rounded btn-accent lowercase w-32"
 			on:click={handleCopy}>{copyButton}</button
 		>
-
       </div>
     </div>
   </div>
