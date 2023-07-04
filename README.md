@@ -10,9 +10,9 @@ A very small extension for generating secure passhphrases.
 
 # installation
 - download zip from releases
-- unzip to it's own folder
+- unzip it
 - chrome -> manage extensions -> load unpacked
-- load the unzipped folder "tiny passhole"
+- load the unzipped folder "build"
 
 # usage
 - pin extension to your top bar
