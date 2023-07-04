@@ -1,6 +1,6 @@
 # tiny passhole
 
-A very small extension for generating secure passhphrases.
+A very small chrome extension for generating secure passhphrases.
 
 # passphrase attributes
 - words range from 5 to 12 characters
