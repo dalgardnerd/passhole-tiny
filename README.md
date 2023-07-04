@@ -16,6 +16,7 @@ A very small extension for generating secure passhphrases.
 
 # usage
 - pin extension to your top bar
-- click on the extension icon and it will automatically generate and copy a passphrase to your clipboard
+- click on the extension icon and it will automatically generate a passphrase
+- if you like it, click copy passphrase
 - you can set a keyboard shortcut in chrome://extensions/shortcuts for even faster usage
 
