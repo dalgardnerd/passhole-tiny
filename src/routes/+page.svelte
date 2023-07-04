@@ -1,29 +1,54 @@
 <script lang="ts">
 
-  import { onMount } from "svelte";
-  import { createPassphrase } from "$lib/utils/createPassphrase";
+	import { onMount } from "svelte";
+	import { createPassphrase } from "$lib/utils/createPassphrase";
 
-  let passphrase: string = "";
-  let count = 0;
-  let words: string[] = [];
+	let passphrase: string = "";
+	let wordList: string[] = [];
 
-  onMount(async () => {
+
+	const minChars = 5;
+	const maxChars = 12;
+	const wordCount = 3;
+	const randomDigits = 2;
+	const wordSeparator = '-';
+
+	let copyButtonText = "Copied!"
+	let copyTimeout: any;
+
+	onMount(async () => {
 		const response = await fetch('basic.txt');
 		const text = await response.text();
-		words = text.split('\n');
-		passphrase = createPassphrase(5,12,3,2,'-',words)
+		wordList = text.split('\n');
+		passphrase = createPassphrase(minChars,maxChars,wordCount,randomDigits,wordSeparator,wordList)
+		copyClipboard(passphrase);
+		setTimeout(() => {
+    		copyButtonText = "copy passphrase"
+		}, 2000); 
+		
+
 	});
 
-  function handleGet() {
-    passphrase = createPassphrase(5,12,3,2,'-',words);
-  }
+	function handleGet() {
+		passphrase = createPassphrase(minChars,maxChars,wordCount,randomDigits,wordSeparator,wordList);
+	}
+
+	function handleCopy() {
+		clearTimeout(copyTimeout);
+		copyClipboard(passphrase);
+		copyButtonText = "copied!"
+		copyTimeout = setTimeout(() => {
+    		copyButtonText = "copy passphrase"
+		}, 2000); 
+	}
 
 
 	async function copyClipboard(text: string): Promise<void> {
 		try {
 			await navigator.clipboard.writeText(text);
 			console.log('Text copied to clipboard:', text);
-		} catch (err) {
+		} 
+		catch (err) {
 			console.error('Failed to write to clipboard:', err);
 		}
 	}
@@ -36,13 +61,13 @@
       <p class="flex justify-center text-center align-center text-md bg-red m-2">{passphrase}</p>
       <div class="card-actions justify-center">
         <button
-				class="btn-sm rounded btn-secondary lowercase"
-				on:click={handleGet}>Create Passphrase</button
-			>
-				<button
-					class="btn-sm rounded btn-accent lowercase"
-					on:click={() => copyClipboard(passphrase)}>Copy Passphrase</button
-				>
+			class="btn-sm rounded btn-primary lowercase"
+			on:click={handleGet}>Create Passphrase</button
+		>
+		<button
+			class="btn-sm rounded btn-accent lowercase w-32"
+			on:click={handleCopy}>{copyButtonText}</button
+		>
 
       </div>
     </div>

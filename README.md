@@ -14,4 +14,8 @@ A very small extension for generating secure passhphrases.
 - chrome -> manage extensions -> load unpacked
 - load the unzipped folder "tiny passhole"
 
+# usage
+- pin extension to your top bar
+- click on the extension icon and it will automatically generate and copy a passphrase to your clipboard
+- you can set a keyboard shortcut in chrome://extensions/shortcuts for even faster usage
 
