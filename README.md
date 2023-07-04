@@ -13,6 +13,7 @@ A very small chrome extension for generating secure passhphrases.
 - unzip it
 - chrome -> manage extensions -> load unpacked
 - load the unzipped folder "build"
+- if you delete the build folder it will no longer work, so keep it somewhere safe
 
 # usage
 - pin extension to your top bar
