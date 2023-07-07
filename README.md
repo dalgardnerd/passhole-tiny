@@ -11,7 +11,7 @@ A very small chrome extension for generating secure passhphrases.
 # installation
 - download zip from releases [https://github.com/dalgardnerd/passhole-tiny/releases/tag/chrome]
 - unzip it
-- chrome -> manage extensions -> load unpacked
+- chrome -> toggle developer mode on -> manage extensions -> load unpacked
 - load the unzipped folder "build"
 - if you delete the build folder it will no longer work, so keep it somewhere safe
 
